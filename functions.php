@@ -1,4 +1,6 @@
 <?php
+
+	require("../../../config.php");
 	// functions.php
 	//var_dump($GLOBALS);
 	
@@ -70,6 +72,8 @@
 				$_SESSION["userId"] = $id;
 				$_SESSION["userEmail"] = $emailFromDb;
 				
+				$_SESSION["message"] = "<h1>Tere tulemast!</h1>";
+				
 				header("Location: data.php");
 				
 			}else {
@@ -88,6 +92,27 @@
 	}
 	
 	
+	function saveCar ($plate, $color) {
+		
+		$database = "if16_romil";
+		$mysqli = new mysqli($GLOBALS["serverHost"], $GLOBALS["serverUsername"], $GLOBALS["serverPassword"], $database);
+
+		$stmt = $mysqli->prepare("INSERT INTO cars_and_colors (plate, color) VALUES (?, ?)");
+	
+		echo $mysqli->error;
+		
+		$stmt->bind_param("ss", $plate, $color);
+		
+		if($stmt->execute()) {
+			echo "salvestamine õnnestus";
+		} else {
+		 	echo "ERROR ".$stmt->error;
+		}
+		
+		$stmt->close();
+		$mysqli->close();
+		
+	}
 	
 	
 	
