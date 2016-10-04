@@ -36,7 +36,12 @@
 		saveCar($_POST["plate"], $_POST["color"]);
 		
 	}
-
+	
+	//saan kõik auto andmed
+	$carData = getAllCars();
+	echo "<pre>";
+	var_dump($carData);
+	echo "</pre>";
 ?>
 <h1>Data</h1>
 <?=$msg;?>
@@ -62,9 +67,38 @@
 	
 </form>
 
+<h2>Autod</h2>
+<?php 
+	
+	$html = "<table>";
+	
+	$html .= "<tr>";
+		$html .= "<th>id</th>";
+		$html .= "<th>plate</th>";
+		$html .= "<th>color</th>";
+	$html .= "</tr>";
+	
+	//iga liikme kohta massiivis
+	foreach($carData as $c){
+		// iga auto on $c
+		//echo $c->plate."<br>";
+		
+		$html .= "<tr>";
+			$html .= "<td>".$c->id."</td>";
+			$html .= "<td>".$c->plate."</td>";
+			$html .= "<td style='background-color:".$c->carColor."'>".$c->carColor."</td>";
+		$html .= "</tr>";
+	}
+	
+	$html .= "</table>";
+	
+	echo $html;
 
+?>
 
-
-
-
+<br>
+<br>
+<br>
+<br>
+<br>
 
