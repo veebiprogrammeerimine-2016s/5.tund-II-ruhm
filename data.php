@@ -93,6 +93,21 @@
 	$html .= "</table>";
 	
 	echo $html;
+	
+	
+	$listHtml = "<br><br>";
+	
+	foreach($carData as $c){
+		
+		
+		$listHtml .= "<h1 style='color:".$c->carColor."'>".$c->plate."</h1>";
+		$listHtml .= "<p>color = ".$c->carColor."</p>";
+	}
+	
+	echo $listHtml;
+	
+	
+	
 
 ?>
 
