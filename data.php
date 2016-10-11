@@ -7,15 +7,16 @@
 		
 		//suunan sisselogimise lehele
 		header("Location: login.php");
-		
+		exit();
 	}
+	
 	
 	//kui on ?logout aadressireal siis login välja
 	if (isset($_GET["logout"])) {
 		
 		session_destroy();
 		header("Location: login.php");
-		
+		exit();
 	}
 	
 	$msg = "";
@@ -33,7 +34,7 @@
 		!empty($_POST["color"])
 	  ) {
 		  
-		saveCar($_POST["plate"], $_POST["color"]);
+		saveCar(cleanInput($_POST["plate"]), cleanInput($_POST["color"]));
 		
 	}
 	

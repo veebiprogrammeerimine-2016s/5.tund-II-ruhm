@@ -75,6 +75,7 @@
 				$_SESSION["message"] = "<h1>Tere tulemast!</h1>";
 				
 				header("Location: data.php");
+				exit();
 				
 			}else {
 				$error = "vale parool";
@@ -155,7 +156,15 @@
 		return $result;
 	}
 	
-	
+	function cleanInput($input){
+		
+		$input = trim($input);
+		$input = stripslashes($input);
+		$input = htmlspecialchars($input);
+		
+		return $input;
+		
+	}
 	
 	
 	

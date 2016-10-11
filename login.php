@@ -7,6 +7,7 @@
 		
 		//suunan sisselogimise lehele
 		header("Location: data.php");
+		exit();
 		
 	}
 	
@@ -103,7 +104,9 @@
 		//echo $serverUsername;
 		
 		// KASUTAN FUNKTSIOONI
-		signUp($signupEmail, $password);
+		$signupEmail = cleanInput($signupEmail);
+		
+		signUp($signupEmail, cleanInput($password));
 		
 	
 	}
@@ -116,7 +119,7 @@
 		!empty($_POST["loginPassword"])
 	  ) {
 		  
-		$error = login($_POST["loginEmail"], $_POST["loginPassword"]);
+		$error = login(cleanInput($_POST["loginEmail"]), cleanInput($_POST["loginPassword"]));
 		
 	}
 	
